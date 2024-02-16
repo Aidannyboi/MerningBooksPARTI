@@ -4,7 +4,7 @@ import cors from "cors";
 
 import dotenv from "dotenv";
 
-import dbConnect from "./config/mongoos.config"
+import dbConnect from "./config/mongoos.config.js"
 
 const app = express();
 
