@@ -10,4 +10,38 @@ async function createBook (req, res) {
     }
 }
 
-export { createBook };
+async function getAllBooks(req, res) {
+    try {
+        const allBooks = await Book.find();
+        res.json(allBooks);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
+}
+
+async function getOneBook (req, res) {
+    try{
+        const foundBook = await Book.findById(req.params.id);
+        res.json(foundBook);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
+}
+
+async function updateOneBook (req, res) {
+        const options = {
+            new: true,
+            runValidators: true,
+        };
+        try {
+            const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, options);
+            res.json(updatedBook);
+        } catch (error) {
+            console.log(error);
+            res.status(400).json(error);
+        }
+    }
+
+export { createBook, getAllBooks, getOneBook, updateOneBook };

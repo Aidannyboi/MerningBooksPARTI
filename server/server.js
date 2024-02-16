@@ -6,9 +6,13 @@ import dotenv from "dotenv";
 
 import dbConnect from "./config/mongoos.config.js"
 
+import router from "./routes/book.routes.js";
+
 const app = express();
 
 app.use(express.json(), cors());
+
+app.use('/api', router);
 
 dotenv.config();
 
