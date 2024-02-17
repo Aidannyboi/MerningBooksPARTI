@@ -44,4 +44,14 @@ async function updateOneBook (req, res) {
         }
     }
 
-export { createBook, getAllBooks, getOneBook, updateOneBook };
+async function deleteOneBook (req, res) {
+    try {
+        const deletedBook = await Book.findByIdAndDelete(req.params.id)
+        res.json(deletedBook);
+    } catch(error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
+}
+
+export { createBook, getAllBooks, getOneBook, updateOneBook, deleteOneBook };

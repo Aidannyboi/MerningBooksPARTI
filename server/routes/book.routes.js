@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { createBook, getAllBooks, getOneBook, updateOneBook } from "../controllers/books.controller.js";
+import { createBook, deleteOneBook, getAllBooks, getOneBook, updateOneBook } from "../controllers/books.controller.js";
 
 const router = Router()
 
@@ -11,5 +11,6 @@ router.route("/books")
 router.route("/book/:id")
     .get(getOneBook)
     .post(updateOneBook)
+    .delete(deleteOneBook)
 
 export default router
